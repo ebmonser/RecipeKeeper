@@ -206,3 +206,8 @@ fieldset{
 legend{
     font-size: large;
 }
+
+#head{
+    margin-left: auto;
+    margin-right: auto;
+}

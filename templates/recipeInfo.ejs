@@ -12,23 +12,25 @@
 
 <body>
     <div class = "header">
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
-		<a id = "home" href = "/"> 
-				<img src="images/recipeKeeperButton.png" height="65" alt = "RecipeKeeper">
-		</a>
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
-		<a href = "/addRecipe">
-			<img src="images/addANewRecipeButton.png" height="65" alt = "addANewRecipe">
-		</a>
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
-		<a href = "/recipeInfo">
-			<img src="images/recipeInfoButton.png" height="65" alt = "addANewRecipe">
-		</a>
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<span id = "head">
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+			<a id = "home" href = "/"> 
+					<img src="images/recipeKeeperButton.png" height="65" alt = "RecipeKeeper">
+			</a>
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+			<a href = "/addRecipe">
+				<img src="images/addANewRecipeButton.png" height="65" alt = "addANewRecipe">
+			</a>
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+			<a href = "/recipeInfo">
+				<img src="images/recipeInfoButton.png" height="65" alt = "addANewRecipe">
+			</a>
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		</span>
 	</div>
     
     <img src="images/RecipeInfo.png" width = "400" alt = "recipeInfo">
-    <form action = "http://localhost:5000/recipeInfo" method = "post">
+    <form action = "https://recipekeeper.onrender.com/recipeInfo" method = "post">
         <label>Please enter the name of the recipe: <input type = "text" name = "recipeName"></label>
         <input type = "submit" id = "submit" value = "Get recipe info">
     </form>

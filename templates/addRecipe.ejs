@@ -12,26 +12,28 @@
 
 <body>
     <div class = "header">
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
-		<a id = "home" href = "/"> 
-				<img src="images/recipeKeeperButton.png" height="65" alt = "RecipeKeeper">
-		</a>
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
-		<a href = "/addRecipe">
-			<img src="images/addANewRecipeButton.png" height="65" alt = "addANewRecipe">
-		</a>
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
-		<a href = "/recipeInfo">
-			<img src="images/recipeInfoButton.png" height="65" alt = "addANewRecipe">
-		</a>
-		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<span id = "head">
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+			<a id = "home" href = "/"> 
+					<img src="images/recipeKeeperButton.png" height="65" alt = "RecipeKeeper">
+			</a>
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+			<a href = "/addRecipe">
+				<img src="images/addANewRecipeButton.png" height="65" alt = "addANewRecipe">
+			</a>
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+			<a href = "/recipeInfo">
+				<img src="images/recipeInfoButton.png" height="65" alt = "addANewRecipe">
+			</a>
+			<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		</span>
 	</div>
 
     <img src = "images/addANewRecipe.png" width = 400 alt = "addANewRecipe">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 
-    <form action = "http://localhost:5000/addRecipe" method = "post" id="ingrForm">
+    <form action = "https://recipekeeper.onrender.com/addRecipe" method = "post" id="ingrForm">
 
         <fieldset>
             <legend><strong>Recipe Information</strong></legend>
