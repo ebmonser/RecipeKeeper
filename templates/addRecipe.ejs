@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Add Recipe</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Sonsie+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <div class = "header">
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a id = "home" href = "/"> 
+				<img src="images/recipeKeeperButton.png" height="65" alt = "RecipeKeeper">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a href = "/addRecipe">
+			<img src="images/addANewRecipeButton.png" height="65" alt = "addANewRecipe">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a href = "/recipeInfo">
+			<img src="images/recipeInfoButton.png" height="65" alt = "addANewRecipe">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+	</div>
+
+    <img src = "images/addANewRecipe.png" width = 400 alt = "addANewRecipe">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+
+    <form action = "http://localhost:5000/addRecipe" method = "post" id="ingrForm">
+
+        <fieldset>
+            <legend><strong>Recipe Information</strong></legend>
+
+            <label>Recipe Name: <input type = "text" name = "recipeName"></label> 
+            <label>Number of Servings: <input type = "number" name = "numServings" min = 1></label>
+            <br>
+
+            Preparation Instructions: 
+            <br>
+            <textarea rows="5" cols="80" name = "prepInfo"></textarea>
+            <br>
+
+            <label>Number of Ingredients: <input type = "number" name = "numIngr" id = "numIngr" min = 1></label>
+            <br>
+            <input type = "button" id = "submit" value = "Start adding ingredients" onclick = "genIngre()">
+        </fieldset>
+
+            <div id = "ingredientsList">
+            </div>
+
+            <div id = "enterQuantity">
+            </div>
+    </form> 
+
+    <script>
+
+        function genIngre() {
+            let num = document.querySelector("#numIngr").value;
+            let list = "<fieldset><legend><strong>Ingredient Information</strong></legend><strong>Step 1: </strong> Enter the name of each ingredient <br>";
+            let curr = 0;
+
+            while (curr < num){
+                list += "<input type = 'text' class = 'indIngr' id = 'indIngr' name = 'indIngr'><br>";
+                curr += 1;
+            }
+            list += "<input type = 'button' id = 'submit' value = 'Next Step' onclick = 'genQuan()'></fieldset>";
+            document.querySelector("#enterQuantity").innerHTML = "";
+            document.querySelector("#ingredientsList").innerHTML = list;
+        }
+
+        async function genQuan() {
+            let num = document.querySelector("#numIngr").value;
+            const arr = document.getElementsByClassName('indIngr');
+            const ingrArr = [...arr].map(input => input.value);
+            var list = "<fieldset><legend><strong>Ingredient Information</strong></legend><strong>Step 2:</strong> Enter measurement type and quantity for each ingredient <br>";
+
+            /*
+                Now, you'll have to access the API for each ingredient and get
+                all the measurements from hints. If hints.length == 0 then you
+                need to make an alert of which ingredient is not a valid ingredient.
+            */
+
+            let curr = 0;
+            while (curr < num){
+
+                const options = {
+                    method: 'GET',
+                    url: 'https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser',
+                    params: {
+                        ingr: ingrArr[curr],
+                        'nutrition-type': 'cooking',
+                        'category[0]': 'generic-foods'
+                    },
+                    headers: {
+                    'X-RapidAPI-Key': '9badb0a443mshf08aa26a16c26b6p14df55jsn72a30af900e4',
+                    'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
+                    }
+                };
+
+                try {
+	                const response = await axios.request(options);
+
+                    if (response.data.hints.length == 0){
+                        alert(`${ingrArr[curr]} is not a recognized ingredient, please try again.`);
+                        return;
+                    } else {
+                        list += `<input type = 'text' name = 'ingr' value = '${ingrArr[curr]}' readonly>
+                                <label> Measurement: <input type = 'number' name = 'quantity' min = 0></label>
+                                <select name = 'type'>`;
+                        response.data.hints[0].measures.forEach(element => {
+                            if (element.label != undefined){
+                            list += `<option value = '${element.label}'>${element.label}</option>`;
+                            }
+                        });
+                        list += "</select> <br>";
+                    
+                    }
+                } catch (error) {
+	                console.error(error);
+                }
+                curr += 1;
+            }
+            list += "<input type = 'submit' id = 'submit' value = 'Submit Recipe'></fieldset>";
+            document.querySelector("#enterQuantity").innerHTML = list;
+            document.querySelector("#ingredientsList").innerHTML = "";
+        };
+    </script>
+</body>

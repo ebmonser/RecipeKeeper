@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Add Recipe</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Sonsie+One&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div class = "header">
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a id = "home" href = "/"> 
+				<img src="images/recipeKeeperButton.png" height="65" alt = "RecipeKeeper">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a href = "/addRecipe">
+			<img src="images/addANewRecipeButton.png" height="65" alt = "addANewRecipe">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a href = "/recipeInfo">
+			<img src="images/recipeInfoButton.png" height="65" alt = "addANewRecipe">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+	</div>
+
+    <img src = "images/RecipeInfo.png" width = "400" alt = "recipeInfo">
+    <br>
+    <strong>Recipe Name:</strong> <%- name %>
+    <br>
+    <strong>Number of servings:</strong> <%- servings %>
+    <br>
+    <strong>Cooking Instructions:</strong>
+    <br> 
+    <%- instructions %>
+    <br>
+
+    <div class = "label">
+        <h2 id = "headNut">Nutritional Facts</h2>
+        <span style="float:left">Serving size <%- servSize %>g</span>
+        <br>
+        <span style="float:left">Servings per recipe <%- numServings %></span>
+        <br>
+        <hr style="border: black solid 1rem;">
+        <span class="left" style = "font-size: small;">
+            <strong>
+                Amount per serving
+            </strong>
+        </span>
+        <br>
+        <hr style="border: black solid 1px;">
+        <span class= "left"><strong>Calories</strong> <%- calsPerServ %></span>
+        <br>
+        <hr style = "border: black solid .5rem;">
+        <span class = "right"><strong>% Daily Value*</strong></span>
+        <br>
+        <hr style="border: black solid 1px;">
+        <span class="left"><strong>Total Fat</strong> <%- fatPerServ %>g</span>
+        <span class = "right"><strong><%- percFat %></strong>%</span>
+
+        <br>
+        <hr style="border: black solid 1px;">
+        <span class="left"><strong>Total Carbohydrates</strong> <%- carbsPerServ %>g</span>
+        <span class = "right"><strong><%- percCarbs %></strong>%</span>
+
+        <br>
+        <hr style="border: black solid 1px;">
+
+        <span class="left"><strong>Protein</strong> <%- proteinPerServ %>g</span>
+        <span class = "right"><strong><%- percProtein %></strong>%</span>
+
+        <br>
+        <hr style="border: black solid 1px;">
+
+        <span class="left"><strong>Fiber</strong> <%- fiberPerServ %>g</span>
+        <span class = "right"><strong><%- percFiber %></strong> %</span>
+
+        <br>
+        <hr style="border: black solid 1rem;">
+            *Percent Daily Values are based on a 2,000 calorie diet.
+    </div>
+    <br>
+
+    <%- ingrTable %>
+    
+</body>

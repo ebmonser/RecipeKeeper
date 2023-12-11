@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Recipe Keeper</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Sonsie+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+	<div class = "header">
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a id = "home" href = "/"> 
+				<img src="images/recipeKeeperButton.png" height="65" alt = "RecipeKeeper">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a href = "/addRecipe">
+			<img src="images/addANewRecipeButton.png" height="65" alt = "addANewRecipe">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+		<a href = "/recipeInfo">
+			<img src="images/recipeInfoButton.png" height="65" alt = "addANewRecipe">
+		</a>
+		<img src="images/ChefGrubble.png" alt = "ChefGrubble">
+	</div>
+
+
+	<img src="images/RecipeKeeper.png" width="400" alt = "RecipeKeeper">
+	<div id = "info">
+		<h2 style = "text-align: center;">Welcome to Recipe Keeper! </h2>
+		Do you want to know the nutritional value of your recipes, but don't want 
+		to waste time figuring it out on your own? Then this website is for you!
+		Recipe Keeper will calculate the calories and macro-nutrient contents of
+		any recipe you want. To get started, click 
+		<a href = "/addRecipe">Add a new recipe</a>. 
+		<br><br>
+		If you have previously entered a recipe and would like to access it's 
+		information, click <a href = "/recipeInfo">Recipe Info</a> and then 
+		enter the name of the recipe you are searching for.
+		<br><br>
+		Recipe Keeper gets all nutrient information of ingredients by using 
+		Edamam Food and Grocery Database API. All recipe information 
+		is stored using MongoDB.
+	</div>
+</body>
